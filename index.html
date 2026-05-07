@@ -1,2 +1,67 @@
-<input type="text" id="videoUrl" placeholder="បញ្ចូល Link វីដេអូ (m3u8 ឬ mp4)" class="...">
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khmer Modern TV</title>
+    <link rel="stylesheet" href="style.css"> <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white">
 
+    <div class="p-5 text-center">
+        <h1 class="text-2xl font-bold text-red-500">KHMER MODERN TV</h1>
+    </div>
+
+    <div id="videoContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4 p-5">
+        <p class="text-center col-span-full">កំពុង load វីដេអូ...</p>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDHGpno45VUvbtRSCPEeIYl71sDoi5bdTY",
+            authDomain: "my-drama-app-6e6bb.firebaseapp.com",
+            projectId: "my-drama-app-6e6bb",
+            storageBucket: "my-drama-app-6e6bb.firebasestorage.app",
+            messagingSenderId: "952108132008",
+            appId: "1:952108132008:web:ec14d9257608b3db0a049d"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function loadVideos() {
+            try {
+                const q = query(collection(db, "videos"), orderBy("createdAt", "desc"));
+                const querySnapshot = await getDocs(q);
+                const container = document.getElementById('videoContainer');
+                container.innerHTML = ""; 
+
+                if (querySnapshot.empty) {
+                    container.innerHTML = "<p class='text-center col-span-full'>មិនទាន់មានវីដេអូនៅឡើយទេ។</p>";
+                    return;
+                }
+
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    container.innerHTML += `
+                        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                            <img src="${data.img}" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h4 class="font-bold">${data.title}</h4>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error(error);
+                document.getElementById('videoContainer').innerHTML = "បញ្ហាការភ្ជាប់ទៅកាន់ Database!";
+            }
+        }
+
+        loadVideos();
+    </script>
+</body>
+</html>
