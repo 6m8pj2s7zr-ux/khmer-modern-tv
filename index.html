@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Video Khmer - Modern Platform</title>
+    <!-- ទាញយក Tailwind CSS មកប្រើប្រាស់ផ្ទាល់ -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- ភ្ជាប់ជាមួយ File CSS របស់អ្នក -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 text-white font-sans antialiased">
+
+    <!-- របារផ្នែកខាងលើ (Navigation Bar) -->
+    <nav class="bg-gray-800/80 backdrop-blur-md fixed w-full z-50 top-0 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-red-500 tracking-wider">KHMER<span class="text-white">TV</span></h1>
+            <ul class="flex space-x-6 text-sm font-medium hidden sm:flex">
+                <li class="hover:text-red-400 cursor-pointer transition">ទំព័រដើម</li>
+                <li class="hover:text-red-400 cursor-pointer transition">វីដេអូថ្មីៗ</li>
+                <li class="hover:text-red-400 cursor-pointer transition">កម្សាន្ត</li>
+            </ul>
+            <button class="bg-red-600 hover:bg-red-500 px-4 py-2 rounded-full text-sm font-bold transition shadow-lg shadow-red-500/30">
+                ចូលគណនី
+            </button>
+        </div>
+    </nav>
+
+    <!-- ផ្នែកមាតិកាខាងលើ (Hero Section) -->
+    <header class="mt-24 max-w-7xl mx-auto px-4">
+        <div class="bg-gray-800 rounded-2xl overflow-hidden relative shadow-2xl h-64 md:h-96 flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="relative z-10 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">ទស្សនាវីដេអូកម្សាន្តគ្មានដែនកំណត់</h2>
+                <p class="text-gray-300 mb-6">បទពិសោធន៍ថ្មី ទាន់សម័យ លឿនជាងមុន</p>
+                <button class="bg-white text-black px-6 py-3 rounded-full font-bold hover:bg-gray-200 transition">
+                    ទស្សនាឥឡូវនេះ
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ផ្នែកបង្ហាញវីដេអូ ឬព័ត៌មាន (Grid Section) -->
+    <main class="max-w-7xl mx-auto px-4 py-10">
+        <h3 class="text-xl font-bold mb-6 border-l-4 border-red-500 pl-3">វីដេអូកំពុងពេញនិយម</h3>
+        
+        <!-- រចនាសម្ព័ន្ធ Grid បង្ហាញជាប្រអប់ៗ -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="video-container">
+            <!-- វីដេអូទី១ -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg">
+                <div class="h-48 bg-gray-700 w-full relative">
+                    <img src="https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Thumbnail" class="w-full h-full object-cover">
+                    <span class="absolute bottom-2 right-2 bg-black/80 px-2 py-1 text-xs rounded">12:30</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-lg mb-2 line-clamp-2">របៀបរៀបចំប្រព័ន្ធកូដវេបសាយទំនើបឆ្នាំ ២០២៦</h4>
+                    <p class="text-gray-400 text-sm">អ្នកទស្សនា 12K • ម្សិលមិញ</p>
+                </div>
+            </div>
+            
+            <!-- វីដេអូទី២ -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg">
+                <div class="h-48 bg-gray-700 w-full relative">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Thumbnail" class="w-full h-full object-cover">
+                    <span class="absolute bottom-2 right-2 bg-black/80 px-2 py-1 text-xs rounded">08:15</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-lg mb-2 line-clamp-2">បច្ចេកវិទ្យាថ្មីៗដែលអ្នកគួរដឹង</h4>
+                    <p class="text-gray-400 text-sm">អ្នកទស្សនា 5.4K • ២ម៉ោងមុន</p>
+                </div>
+            </div>
+
+            <!-- វីដេអូទី៣ -->
+            <div class="bg-gray-800 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer shadow-lg">
+                <div class="h-48 bg-gray-700 w-full relative">
+                    <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Thumbnail" class="w-full h-full object-cover">
+                    <span class="absolute bottom-2 right-2 bg-black/80 px-2 py-1 text-xs rounded">20:00</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-lg mb-2 line-clamp-2">ការប្រកួតដ៏ស្វិតស្វាញក្នុងពិភព eSports</h4>
+                    <p class="text-gray-400 text-sm">អ្នកទស្សនា 20K • ៥ថ្ងៃមុន</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ភ្ជាប់ជាមួយ File JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
