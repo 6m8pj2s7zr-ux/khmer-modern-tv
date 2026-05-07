@@ -1,25 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Freehand&family=Kantumruy+Pro:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@100;400;700&family=Moul&display=swap');
+
+:root {
+    --primary-color: #e50914; /* ពណ៌ក្រហមដូច Netflix */
+    --bg-dark: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+}
 
 body {
     font-family: 'Kantumruy Pro', sans-serif;
+    background-color: var(--bg-dark);
+    color: white;
+    line-height: 1.6; /* សំខាន់សម្រាប់អក្សរខ្មែរ */
+    margin: 0;
 }
 
-/* ចលនា Smooth */
-.transition {
-    transition: all 0.3s ease;
+/* ស្ទីលចំណងជើង (ប្រើ Font Moul ឱ្យដូច TV) */
+h1, h2, .logo {
+    font-family: 'Moul', serif;
+    color: var(--primary-color);
+    letter-spacing: 1px;
 }
 
-/* រចនាប័ទ្ម Input */
-input::placeholder {
-    color: #9ca3af;
-    font-size: 0.8rem;
+/* កែសម្រួល Card វីដេអូឱ្យមាន Effect ស្អាតជាងមុន */
+.video-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px); /* ធ្វើឱ្យ Card ថ្លាៗ */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* កែសម្រួល Scrollbar ឱ្យស្អាត */
+.video-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-color: var(--primary-color);
+}
+
+/* កំណត់ទំហំរូបភាពឱ្យស្មើគ្នា (16:9) */
+.video-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9; 
+    object-fit: cover;
+}
+
+/* ប៊ូតុងបិទ/បើក និង Input */
+input, button {
+    outline: none;
+    border-radius: 8px;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+button:hover {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+}
+
+/* កែសម្រួល Scrollbar ឱ្យតូច និងស្អាត */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #0f172a;
 }
 ::-webkit-scrollbar-thumb {
-    background: #4b5563;
+    background: #334155;
     border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
 }
