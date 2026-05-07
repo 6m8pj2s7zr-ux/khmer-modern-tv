@@ -1,30 +1,25 @@
-/* ធ្វើឱ្យការ Scroll រលូនល្អ */
-html {
-    scroll-behavior: smooth;
+@import url('https://fonts.googleapis.com/css2?family=Freehand&family=Kantumruy+Pro:wght@100;400;700&display=swap');
+
+body {
+    font-family: 'Kantumruy Pro', sans-serif;
 }
 
-/* លាក់ Scrollbar តែនៅតែអាចទាញឡើងចុះបាន */
+/* ចលនា Smooth */
+.transition {
+    transition: all 0.3s ease;
+}
+
+/* រចនាប័ទ្ម Input */
+input::placeholder {
+    color: #9ca3af;
+    font-size: 0.8rem;
+}
+
+/* កែសម្រួល Scrollbar ឱ្យស្អាត */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
-
-::-webkit-scrollbar-track {
-    background: #111827; 
-}
-
 ::-webkit-scrollbar-thumb {
-    background: #374151; 
+    background: #4b5563;
     border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #4B5563; 
-}
-
-/* កាត់អត្ថបទដែលវែងពេកឱ្យចេញជាសញ្ញា (...) */
-.line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;  
-    overflow: hidden;
 }
