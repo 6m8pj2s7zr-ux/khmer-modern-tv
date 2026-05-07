@@ -1,25 +1,2 @@
-<script type="module">
-  // បងមិនបាច់កែអ្វីក្នុងនេះទេ ខ្ញុំរៀបចំឱ្យហើយ
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+<input type="text" id="videoUrl" placeholder="បញ្ចូល Link វីដេអូ (m3u8 ឬ mp4)" class="...">
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDHGpno45VUvbtRSCPEeIYl71sDoi5bdTY",
-    authDomain: "my-drama-app-6e6bb.firebaseapp.com",
-    projectId: "my-drama-app-6e6bb",
-    storageBucket: "my-drama-app-6e6bb.firebasestorage.app",
-    messagingSenderId: "952108132008",
-    appId: "1:952108132008:web:ec14d9257608b3db0a049d",
-    measurementId: "G-L0SF2L59PQ"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // បញ្ជូនទិន្នន័យទៅកាន់ script.js ដើម្បីប្រើប្រាស់
-  window.db = db;
-  window.dbFunctions = { collection, addDoc, getDocs, query, orderBy };
-</script>
-
-<script src="script.js"></script>
