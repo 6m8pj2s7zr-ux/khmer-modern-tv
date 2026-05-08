@@ -3,58 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Khmer Modern TV | ប៊ុនហេង</title>
+    <title>Modern TV Khmer | ប៊ុនហេង</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Header ផ្នែកខាងលើ -->
     <header>
-        <div class="top-nav">
-            <div class="logo">Modern<span>TV</span></div>
-            <button id="open-settings" class="btn-icon"><i class="fa fa-sliders-h"></i></button>
+        <div class="top-bar">
+            <div class="logo">MODERN<span>TV</span></div>
+            <button id="btn-settings" class="icon-btn"><i class="fa fa-cog"></i></button>
         </div>
-        <div class="search-wrapper">
-            <input type="text" id="search-input" placeholder="ស្វែងរកវីដេអូដែលអ្នកចង់មើល...">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="ស្វែងរកវីដេអូ ឬរឿងភាគ...">
             <i class="fa fa-search"></i>
         </div>
     </header>
 
-    <!-- តួសាច់រឿង/វីដេអូ -->
-    <main class="content-area">
-        <div class="grid-container" id="video-display">
-            <!-- វីដេអូនឹងបង្ហាញនៅទីនេះ -->
-        </div>
+    <main>
+        <div class="video-grid" id="main-display">
+            </div>
     </main>
 
-    <!-- ផ្ទាំង Settings & Admin Dashboard -->
-    <div id="modal-settings" class="modal-overlay">
-        <div class="modal-box">
+    <div id="modal-ui" class="modal-bg">
+        <div class="modal-content">
             <div class="modal-header">
-                <h3>ការកំណត់ & Admin</h3>
-                <span id="close-modal">&times;</span>
+                <h3>ការកំណត់ & បង្ហោះ</h3>
+                <span id="close-ui">&times;</span>
             </div>
             
-            <div class="setting-row">
+            <div class="setting-item">
                 <span>របៀបងងឹត (Dark Mode)</span>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="dark-toggle">
-                    <span class="round-slider"></span>
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-switch">
+                    <span class="slider"></span>
                 </label>
             </div>
 
-            <div class="admin-section">
+            <hr>
+            <div class="admin-panel">
                 <h4>បង្ហោះមាតិកាថ្មី (Owner Only)</h4>
-                <input type="text" id="add-title" placeholder="បញ្ចូលចំណងជើងរឿង">
-                <input type="text" id="add-thumb" placeholder="Link រូបភាព Thumbnail">
-                <input type="text" id="add-url" placeholder="Link វីដេអូ (YouTube/MP4)">
-                <select id="add-type">
+                <input type="text" id="new-title" placeholder="ចំណងជើង">
+                <input type="text" id="new-thumb" placeholder="Link រូបភាព Thumbnail">
+                <input type="text" id="new-url" placeholder="Link វីដេអូ">
+                <select id="new-category">
                     <option value="movie">រឿងភាគ</option>
                     <option value="video">វីដេអូខ្លី</option>
-                    <option value="news">ព័ត៌មាន</option>
                 </select>
-                <button id="btn-save-post">បង្ហោះចូលវេបសាយ</button>
+                <button id="save-post">បង្ហោះចូលវេបសាយ</button>
             </div>
         </div>
     </div>
