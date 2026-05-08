@@ -3,29 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV Video Khmer - កម្សាន្តគ្មានដែនកំណត់</title>
+    <title>Khmer Modern TV</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <header>
-        <div class="logo">TV Video <span>Khmer</span></div>
-        <div class="search-box">
-            <input type="text" placeholder="ស្វែងរកវីដេអូ...">
-            <button><i class="fa fa-search"></i></button>
+        <div class="nav-top">
+            <div class="logo">Modern<span>TV</span></div>
+            <button id="open-settings" class="icon-btn"><i class="fa fa-cog"></i></button>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="ស្វែងរកវីដេអូ ឬរឿងភាគ...">
+            <i class="fa fa-search"></i>
         </div>
     </header>
 
-    <nav class="categories">
-        <a href="#" class="active">ទាំងអស់</a>
-        <a href="#">រឿងភាគ</a>
-        <a href="#">ព័ត៌មាន</a>
-        <a href="#">តុក្កតា</a>
-    </nav>
-
     <main class="video-grid" id="video-container">
         </main>
+
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>ការកំណត់ & បង្ហោះ</h2>
+                <button id="close-settings">&times;</button>
+            </div>
+            
+            <div class="setting-item">
+                <span>Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <hr>
+            <h3>ផ្នែកម្ចាស់គេហទំព័រ (Owner)</h3>
+            <div class="admin-form">
+                <input type="text" id="post-title" placeholder="ចំណងជើង">
+                <input type="text" id="post-link" placeholder="Link រូបភាព Thumbnail">
+                <input type="text" id="video-url" placeholder="Link វីដេអូ (YouTube/MP4)">
+                <select id="post-type">
+                    <option value="video">វីដេអូ</option>
+                    <option value="movie">រឿងភាគ</option>
+                    <option value="image">រូបភាព</option>
+                </select>
+                <button id="btn-upload">បង្ហោះឥឡូវនេះ</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
