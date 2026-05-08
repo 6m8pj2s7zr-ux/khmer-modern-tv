@@ -1,126 +1,70 @@
-<!DOCTYPE html>
-
-<html lang="km">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Modern TV Khmer | ប៊ុនហេង</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Hanuman:wght@400;700;900&display=swap" rel="stylesheet">
-</head>
-<body>
-
-```
-<!-- TOP HEADER -->
-<header class="site-header">
-    <div class="header-top">
-        <div class="logo">MODERN<span>TV</span></div>
-        <div class="header-actions">
-            <button class="icon-btn" id="btn-search-toggle"><i class="fa fa-search"></i></button>
-            <button class="icon-btn" id="btn-settings"><i class="fa fa-cog"></i></button>
+<button class="player-back-btn" id="close-player"><i class="fa fa-arrow-left"></i></button>
+            <h3 id="player-title">វីដេអូ</h3>
         </div>
-    </div>
-    <!-- Search Bar (hidden by default, toggles) -->
-    <div class="search-bar-wrap" id="search-bar-wrap">
-        <div class="search-box">
-            <i class="fa fa-search"></i>
-            <input type="text" id="search-input" placeholder="ស្វែងរកវីដេអូ ឬរឿងភាគ...">
-            <button class="search-close" id="search-close"><i class="fa fa-times"></i></button>
-        </div>
-    </div>
-    <!-- Category Nav -->
-    <nav class="category-nav" id="category-nav">
-        <button class="cat-btn active" data-cat="all">ទាំងអស់</button>
-        <button class="cat-btn" data-cat="movie">រឿងភាគ</button>
-        <button class="cat-btn" data-cat="video">វីដេអូ</button>
-        <button class="cat-btn" data-cat="news">ព័ត៌មាន</button>
-        <button class="cat-btn" data-cat="music">តន្ត្រី</button>
-        <button class="cat-btn" data-cat="sport">កីឡា</button>
-    </nav>
-</header>
-
-<main class="main-wrap">
-
-    <!-- FEATURED BANNER -->
-    <section class="featured-section" id="featured-section">
-        <div class="featured-card" id="featured-card">
-            <img src="" id="featured-img" class="featured-img" alt="">
-            <div class="featured-overlay">
-                <span class="featured-badge"><i class="fa fa-fire"></i> ពេញនិយម</span>
-                <h2 id="featured-title">រឿងភាគថ្មីៗ កំពុងពេញនិយម</h2>
-                <p id="featured-cat" class="featured-cat-tag">#រឿងភាគ</p>
-                <button class="play-main-btn" id="featured-play"><i class="fa fa-play"></i> មើលឥឡូវ</button>
+        <div class="player-video-box" id="player-video-box">
+            <div class="player-placeholder" id="player-placeholder">
+                <i class="fa fa-play-circle"></i>
+                <p>គ្មាន Link វីដេអូ</p>
+                <small>Owner អាចបន្ថែម URL នៅពេល Upload</small>
             </div>
-        </div>
-    </section>
-
-    <!-- TRENDING BAR -->
-    <section class="trending-bar">
-        <div class="trending-label"><i class="fa fa-bolt"></i> ថ្មីៗ</div>
-        <div class="trending-scroll" id="trending-scroll">
-            <!-- filled by JS -->
-        </div>
-    </section>
-
-    <!-- SECTION TITLE -->
-    <div class="section-header">
-        <h2 id="section-title">រឿងភាគ & វីដេអូទាំងអស់</h2>
-        <span class="count-badge" id="count-badge">0 មាតិកា</span>
-    </div>
-
-    <!-- VIDEO GRID -->
-    <div class="video-grid" id="main-display">
-    </div>
-
-    <!-- EMPTY STATE -->
-    <div class="empty-state" id="empty-state" style="display:none;">
-        <i class="fa fa-film"></i>
-        <p>រកមិនឃើញ</p>
-    </div>
-
-    <!-- LOAD MORE -->
-    <div class="load-more-wrap" id="load-more-wrap" style="display:none;">
-        <button class="load-more-btn" id="load-more-btn">មើលបន្ថែម <i class="fa fa-chevron-down"></i></button>
-    </div>
-
-</main>
-
-<!-- BOTTOM NAV (Mobile) -->
-<nav class="bottom-nav">
-    <button class="bnav-btn active" data-cat="all"><i class="fa fa-home"></i><span>ផ្ទះ</span></button>
-    <button class="bnav-btn" data-cat="movie"><i class="fa fa-film"></i><span>រឿង</span></button>
-    <button class="bnav-btn" data-cat="video"><i class="fa fa-video"></i><span>វីដេអូ</span></button>
-    <button class="bnav-btn" id="bnav-upload"><i class="fa fa-plus-circle"></i><span>បង្ហោះ</span></button>
-    <button class="bnav-btn" data-cat="music"><i class="fa fa-music"></i><span>តន្ត្រី</span></button>
-</nav>
-
-<!-- VIDEO PLAYER MODAL -->
-<div id="modal-player" class="modal-bg">
-    <div class="player-wrap">
-        <div class="player-header">
-            <h3 id="player-title">...កំពុងផ្ទុក...</h3>
-            <button class="icon-btn" id="close-player"><i class="fa fa-times"></i></button>
-        </div>
-        <div class="player-video-box">
-            <iframe id="player-iframe" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+            <iframe id="player-iframe" src="" frameborder="0"
+                allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"
+                style="display:none; position:absolute; inset:0; width:100%; height:100%;"></iframe>
         </div>
         <div class="player-meta">
             <span id="player-cat" class="cat-pill"></span>
+            <p id="player-desc" class="player-desc"></p>
         </div>
     </div>
 </div>
 
-<!-- SETTINGS / UPLOAD MODAL -->
+<!-- ===== ADMIN LOGIN MODAL ===== -->
+<div id="modal-login" class="modal-bg" style="display:flex;">
+    <div class="login-box">
+        <div class="login-logo">MODERN<span>TV</span></div>
+        <p class="login-sub">ចូលគណនី Admin</p>
+        <div class="login-field">
+            <i class="fa fa-lock"></i>
+            <input type="password" id="admin-pw-input" placeholder="បញ្ចូល Password" autocomplete="off">
+            <button class="pw-eye-btn" id="pw-eye-btn" type="button">
+                <i class="fa fa-eye" id="pw-eye-icon"></i>
+            </button>
+        </div>
+        <div class="login-error" id="login-error" style="display:none;">
+            <i class="fa fa-exclamation-circle"></i> Password មិនត្រូវ!
+        </div>
+        <button class="login-btn" id="login-btn">
+            <i class="fa fa-sign-in-alt"></i> ចូល Admin
+        </button>
+        <button class="login-skip-btn" id="login-skip-btn">
+            <i class="fa fa-eye"></i> មើលដូចភ្ញៀវ
+        </button>
+    </div>
+</div>
+
+<!-- ===== SETTINGS / UPLOAD MODAL ===== -->
 <div id="modal-ui" class="modal-bg">
     <div class="modal-content">
         <div class="modal-header">
-            <h3><i class="fa fa-cog"></i> ការកំណត់ & បង្ហោះ</h3>
-            <button class="icon-btn" id="close-ui"><i class="fa fa-times"></i></button>
+            <h3><i class="fa fa-cog"></i> ការកំណត់</h3>
+            <button class="icon-btn close-modal-btn" id="close-ui"><i class="fa fa-times"></i></button>
         </div>
 
+        <!-- Admin Badge -->
+        <div class="admin-badge" id="admin-badge" style="display:none;">
+            <i class="fa fa-shield-alt"></i>
+            <span>Admin Mode</span>
+            <button id="logout-btn"><i class="fa fa-sign-out-alt"></i> ចាកចេញ</button>
+        </div>
+        <div class="guest-badge" id="guest-badge">
+            <i class="fa fa-user"></i>
+            <span>Guest Mode</span>
+            <button id="goto-login-btn"><i class="fa fa-sign-in-alt"></i> Login</button>
+        </div>
+
+        <!-- Dark Mode -->
         <div class="setting-item">
-            <span><i class="fa fa-moon"></i> របៀបងងឹត (Dark Mode)</span>
+            <span><i class="fa fa-moon"></i> Dark Mode</span>
             <label class="switch">
                 <input type="checkbox" id="dark-mode-switch">
                 <span class="slider"></span>
@@ -128,36 +72,20 @@
         </div>
 
         <hr>
-        <div class="admin-panel">
-            <h4><i class="fa fa-upload"></i> បង្ហោះមាតិកាថ្មី</h4>
-            <input type="text" id="new-title" placeholder="ចំណងជើងរឿង / វីដេអូ">
-            <input type="text" id="new-thumb" placeholder="Link Thumbnail (រូបភាព)">
-            <input type="text" id="new-url" placeholder="Link វីដេអូ (YouTube / ...)">
-            <select id="new-category">
-                <option value="movie">រឿងភាគ</option>
-                <option value="video">វីដេអូខ្លី</option>
-                <option value="news">ព័ត៌មាន</option>
-                <option value="music">តន្ត្រី</option>
-                <option value="sport">កីឡា</option>
-            </select>
-            <label class="featured-check">
-                <input type="checkbox" id="new-featured"> កំណត់ជា Featured (ផ្ទាំងធំ)
-            </label>
-            <button id="save-post"><i class="fa fa-cloud-upload-alt"></i> បង្ហោះចូលវេបសាយ</button>
-        </div>
 
-        <hr>
-        <div class="danger-zone">
-            <button id="clear-all-btn"><i class="fa fa-trash"></i> លុបទិន្នន័យទាំងអស់</button>
-        </div>
-    </div>
-</div>
-
-<!-- TOAST NOTIFICATION -->
-<div id="toast" class="toast"></div>
-
-<script src="script.js"></script>
-```
-
-</body>
-</html>
+        <!-- ADMIN ONLY PANEL -->
+        <div id="admin-only-panel" style="display:none;">
+            <div class="admin-panel">
+                <h4><i class="fa fa-upload"></i> បង្ហោះមាតិកាថ្មី</h4>
+                <input type="text" id="new-title" placeholder="ចំណងជើងរឿង / វីដេអូ">
+                <div class="thumb-input-wrap">
+                    <input type="text" id="new-thumb" placeholder="Link Thumbnail (URL រូបភាព)">
+                    <div class="thumb-preview-mini" id="thumb-preview-mini" style="display:none;">
+                        <img id="thumb-preview-img" src="" alt="">
+                    </div>
+                </div>
+                <input type="text" id="new-url" placeholder="Link វីដេអូ (YouTube / FB / ...)">
+                <select id="new-category">
+                    <option value="movie">🎬 រឿងភាគ</option>
+                    <option value="video">📹 វីដេអូ</option>
+                    <option value="news">📰 ព័ត៌មាន</option>
