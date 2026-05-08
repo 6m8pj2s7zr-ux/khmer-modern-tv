@@ -1,56 +1,57 @@
-const videoContainer = document.getElementById('video-container');
-const settingsModal = document.getElementById('settings-modal');
-const darkModeToggle = document.getElementById('dark-mode-toggle');
+const videoDisplay = document.getElementById('video-display');
+const modal = document.getElementById('modal-settings');
+const darkToggle = document.getElementById('dark-toggle');
 
-// ១. ទាញយកទិន្នន័យពី LocalStorage (បើមាន)
-let myContent = JSON.parse(localStorage.getItem('myVideos')) || [
-    { title: "ស្វាគមន៍មកកាន់ TV ថ្មី", thumb: "https://via.placeholder.com/300x169", type: "video" }
+// ១. ប្រព័ន្ធទិន្នន័យ (ទាញចេញពីម៉ាស៊ីនទូរស័ព្ទលោកផ្ទាល់)
+let myGallery = JSON.parse(localStorage.getItem('khmer_tv_data')) || [
+    { title: "រឿងភាគថ្មីៗប្រចាំសប្តាហ៍", thumb: "https://picsum.photos/400/225?random=1", type: "movie" },
+    { title: "ព័ត៌មានកម្សាន្តទាន់ហេតុការណ៍", thumb: "https://picsum.photos/400/225?random=2", type: "news" }
 ];
 
-// ២. មុខងារបង្ហាញមាតិកា
-function renderContent(filter = "") {
-    videoContainer.innerHTML = "";
-    const filtered = myContent.filter(item => item.title.toLowerCase().includes(filter.toLowerCase()));
-    
-    filtered.forEach((item, index) => {
-        const card = document.createElement('div');
-        card.className = 'video-card';
-        card.innerHTML = `
-            <img src="${item.thumb}" class="thumb">
-            <div class="info">
-                <h3>${item.title}</h3>
-                <p style="font-size: 11px; opacity: 0.6;">${item.type.toUpperCase()}</p>
+// ២. មុខងារបង្ហាញ Card វីដេអូ
+function loadContent(searchText = "") {
+    videoDisplay.innerHTML = "";
+    const filtered = myGallery.filter(item => item.title.toLowerCase().includes(searchText.toLowerCase()));
+
+    filtered.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+            <img src="${item.thumb}" class="card-img" loading="lazy">
+            <div class="card-body">
+                <h4>${item.title}</h4>
+                <small style="opacity: 0.6; font-size: 10px;">#${item.type}</small>
             </div>
         `;
-        videoContainer.appendChild(card);
+        videoDisplay.appendChild(div);
     });
 }
 
-// ៣. មុខងារបង្ហោះ (Admin Upload)
-document.getElementById('btn-upload').addEventListener('click', () => {
-    const title = document.getElementById('post-title').value;
-    const thumb = document.getElementById('post-link').value;
-    const type = document.getElementById('post-type').value;
+// ៣. មុខងារបង្ហោះថ្មី (Admin Save)
+document.getElementById('btn-save-post').addEventListener('click', () => {
+    const title = document.getElementById('add-title').value;
+    const thumb = document.getElementById('add-thumb').value;
+    const type = document.getElementById('add-type').value;
 
-    if(title && thumb) {
-        myContent.unshift({ title, thumb, type });
-        localStorage.setItem('myVideos', JSON.stringify(myContent));
-        renderContent();
-        settingsModal.style.display = "none";
-        alert("បង្ហោះជោគជ័យ!");
+    if (title && thumb) {
+        myGallery.unshift({ title, thumb, type });
+        localStorage.setItem('khmer_tv_data', JSON.stringify(myGallery)); // រក្សាទុក
+        loadContent();
+        modal.style.display = "none";
+        alert("ជោគជ័យ! មាតិកាថ្មីត្រូវបានបង្ហោះ។");
     } else {
-        alert("សូមបំពេញព័ត៌មានឱ្យគ្រប់!");
+        alert("សូមបំពេញចំណងជើង និងរូបភាព!");
     }
 });
 
-// ៤. មុខងារ Dark Mode (រក្សាទុកក្នុង Memory)
-if(localStorage.getItem('theme') === 'dark') {
+// ៤. មុខងារ Dark Mode (ចងចាំជានិច្ច)
+if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
-    darkModeToggle.checked = true;
+    darkToggle.checked = true;
 }
 
-darkModeToggle.addEventListener('change', () => {
-    if(darkModeToggle.checked) {
+darkToggle.addEventListener('change', () => {
+    if (darkToggle.checked) {
         document.body.classList.add('dark-mode');
         localStorage.setItem('theme', 'dark');
     } else {
@@ -61,13 +62,13 @@ darkModeToggle.addEventListener('change', () => {
 
 // ៥. មុខងារស្វែងរក (Search)
 document.getElementById('search-input').addEventListener('input', (e) => {
-    renderContent(e.target.value);
+    loadContent(e.target.value);
 });
 
-// ៦. បើក/បិទ Settings
-document.getElementById('open-settings').onclick = () => settingsModal.style.display = "block";
-document.getElementById('close-settings').onclick = () => settingsModal.style.display = "none";
-window.onclick = (e) => { if(e.target == settingsModal) settingsModal.style.display = "none"; }
+// ៦. បើក/បិទ Modal
+document.getElementById('open-settings').onclick = () => modal.style.display = "block";
+document.getElementById('close-modal').onclick = () => modal.style.display = "none";
+window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
 
-// បង្ហាញទិន្នន័យដំបូង
-renderContent();
+// ដំណើរការដំបូង
+loadContent();
