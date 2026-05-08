@@ -1,91 +1,48 @@
-<button class="player-back-btn" id="close-player"><i class="fa fa-arrow-left"></i></button>
-            <h3 id="player-title">វីដេអូ</h3>
-        </div>
-        <div class="player-video-box" id="player-video-box">
-            <div class="player-placeholder" id="player-placeholder">
-                <i class="fa fa-play-circle"></i>
-                <p>គ្មាន Link វីដេអូ</p>
-                <small>Owner អាចបន្ថែម URL នៅពេល Upload</small>
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Video Khmer - ទំព័រដើម</title>
+    <!-- ភ្ជាប់ទៅកាន់ឯកសារ CSS របស់អ្នក -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ផ្នែកខាងលើគេបង្អស់ (Header & Menu) -->
+    <header>
+        <div class="logo">📺 TV Video Khmer</div>
+        <nav>
+            <ul>
+                <li><a href="#">ទំព័រដើម</a></li>
+                <li><a href="#">វីដេអូថ្មីៗ</a></li>
+                <li><a href="#">ទំនាក់ទំនង</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ផ្នែកកណ្តាលសម្រាប់បង្ហាញវីដេអូ -->
+    <main>
+        <section class="video-section">
+            <h2>វីដេអូកម្សាន្តប្រចាំថ្ងៃ</h2>
+            
+            <!-- កន្លែងបង្កប់វីដេអូ YouTube -->
+            <div class="video-container">
+                <!-- អ្នកអាចប្តូរ Link របស់ YouTube នៅត្រង់ពាក្យ src="..." -->
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <iframe id="player-iframe" src="" frameborder="0"
-                allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"
-                style="display:none; position:absolute; inset:0; width:100%; height:100%;"></iframe>
-        </div>
-        <div class="player-meta">
-            <span id="player-cat" class="cat-pill"></span>
-            <p id="player-desc" class="player-desc"></p>
-        </div>
-    </div>
-</div>
+            
+            <p class="video-desc">សូមស្វាគមន៍មកកាន់វេបសាយរបស់យើង! កន្លែងប្រមូលផ្តុំវីដេអូកម្សាន្ត និងព័ត៌មានទាន់ហេតុការណ៍។</p>
+        </section>
+    </main>
 
-<!-- ===== ADMIN LOGIN MODAL ===== -->
-<div id="modal-login" class="modal-bg" style="display:flex;">
-    <div class="login-box">
-        <div class="login-logo">MODERN<span>TV</span></div>
-        <p class="login-sub">ចូលគណនី Admin</p>
-        <div class="login-field">
-            <i class="fa fa-lock"></i>
-            <input type="password" id="admin-pw-input" placeholder="បញ្ចូល Password" autocomplete="off">
-            <button class="pw-eye-btn" id="pw-eye-btn" type="button">
-                <i class="fa fa-eye" id="pw-eye-icon"></i>
-            </button>
-        </div>
-        <div class="login-error" id="login-error" style="display:none;">
-            <i class="fa fa-exclamation-circle"></i> Password មិនត្រូវ!
-        </div>
-        <button class="login-btn" id="login-btn">
-            <i class="fa fa-sign-in-alt"></i> ចូល Admin
-        </button>
-        <button class="login-skip-btn" id="login-skip-btn">
-            <i class="fa fa-eye"></i> មើលដូចភ្ញៀវ
-        </button>
-    </div>
-</div>
+    <!-- ផ្នែកខាងក្រោមគេបង្អស់ (Footer) -->
+    <footer>
+        <p>&copy; 2026 TV Video Khmer. រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+    </footer>
 
-<!-- ===== SETTINGS / UPLOAD MODAL ===== -->
-<div id="modal-ui" class="modal-bg">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3><i class="fa fa-cog"></i> ការកំណត់</h3>
-            <button class="icon-btn close-modal-btn" id="close-ui"><i class="fa fa-times"></i></button>
-        </div>
+    <!-- ភ្ជាប់ទៅកាន់ឯកសារ JavaScript របស់អ្នក -->
+    <script src="script.js"></script>
 
-        <!-- Admin Badge -->
-        <div class="admin-badge" id="admin-badge" style="display:none;">
-            <i class="fa fa-shield-alt"></i>
-            <span>Admin Mode</span>
-            <button id="logout-btn"><i class="fa fa-sign-out-alt"></i> ចាកចេញ</button>
-        </div>
-        <div class="guest-badge" id="guest-badge">
-            <i class="fa fa-user"></i>
-            <span>Guest Mode</span>
-            <button id="goto-login-btn"><i class="fa fa-sign-in-alt"></i> Login</button>
-        </div>
-
-        <!-- Dark Mode -->
-        <div class="setting-item">
-            <span><i class="fa fa-moon"></i> Dark Mode</span>
-            <label class="switch">
-                <input type="checkbox" id="dark-mode-switch">
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <hr>
-
-        <!-- ADMIN ONLY PANEL -->
-        <div id="admin-only-panel" style="display:none;">
-            <div class="admin-panel">
-                <h4><i class="fa fa-upload"></i> បង្ហោះមាតិកាថ្មី</h4>
-                <input type="text" id="new-title" placeholder="ចំណងជើងរឿង / វីដេអូ">
-                <div class="thumb-input-wrap">
-                    <input type="text" id="new-thumb" placeholder="Link Thumbnail (URL រូបភាព)">
-                    <div class="thumb-preview-mini" id="thumb-preview-mini" style="display:none;">
-                        <img id="thumb-preview-img" src="" alt="">
-                    </div>
-                </div>
-                <input type="text" id="new-url" placeholder="Link វីដេអូ (YouTube / FB / ...)">
-                <select id="new-category">
-                    <option value="movie">🎬 រឿងភាគ</option>
-                    <option value="video">📹 វីដេអូ</option>
-                    <option value="news">📰 ព័ត៌មាន</option>
+</body>
+</html>
