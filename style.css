@@ -1,81 +1,125 @@
-@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@100;400;700&family=Moul&display=swap');
-
 :root {
-    --primary-color: #e50914; /* ពណ៌ក្រហមដូច Netflix */
-    --bg-dark: #0f172a;
-    --card-bg: rgba(30, 41, 59, 0.7);
+    --primary-color: #e74c3c;
+    --dark-bg: #f9f9f9;
 }
 
 body {
-    font-family: 'Kantumruy Pro', sans-serif;
-    background-color: var(--bg-dark);
-    color: white;
-    line-height: 1.6; /* សំខាន់សម្រាប់អក្សរខ្មែរ */
     margin: 0;
+    font-family: 'Hanuman', Arial, sans-serif;
+    background-color: var(--dark-bg);
 }
 
-/* ស្ទីលចំណងជើង (ប្រើ Font Moul ឱ្យដូច TV) */
-h1, h2, .logo {
-    font-family: 'Moul', serif;
-    color: var(--primary-color);
-    letter-spacing: 1px;
+header {
+    background-color: #fff;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-/* កែសម្រួល Card វីដេអូឱ្យមាន Effect ស្អាតជាងមុន */
-.video-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(10px); /* ធ្វើឱ្យ Card ថ្លាៗ */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
 }
 
-.video-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    border-color: var(--primary-color);
-}
+.logo span { color: var(--primary-color); }
 
-/* កំណត់ទំហំរូបភាពឱ្យស្មើគ្នា (16:9) */
-.video-card img {
+.search-box {
+    display: flex;
     width: 100%;
-    aspect-ratio: 16 / 9; 
+    max-width: 400px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+}
+
+.search-box button {
+    padding: 8px 15px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 20px 20px 0;
+}
+
+.categories {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    background: #fff;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.categories a {
+    text-decoration: none;
+    color: #666;
+    padding: 5px 15px;
+    border-radius: 15px;
+    background: #eee;
+    font-size: 14px;
+}
+
+.categories a.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* រចនា Video Cards */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* បង្ហាញ ២ កាតក្នុង ១ ជួរសម្រាប់ទូរស័ព្ទ */
+    gap: 10px;
+    padding: 10px;
+}
+
+.video-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.thumbnail {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #ddd;
+    position: relative;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-/* ប៊ូតុងបិទ/បើក និង Input */
-input, button {
-    outline: none;
-    border-radius: 8px;
+.video-info {
+    padding: 8px;
 }
 
-button {
-    cursor: pointer;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-weight: bold;
-    transition: 0.2s;
+.video-info h3 {
+    margin: 0;
+    font-size: 13px;
+    color: #333;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
 }
 
-button:hover {
-    filter: brightness(1.2);
-    transform: scale(1.05);
-}
-
-/* កែសម្រួល Scrollbar ឱ្យតូច និងស្អាត */
-::-webkit-scrollbar {
-    width: 6px;
-}
-::-webkit-scrollbar-track {
-    background: #0f172a;
-}
-::-webkit-scrollbar-thumb {
-    background: #334155;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-color);
+.video-info p {
+    font-size: 11px;
+    color: #888;
+    margin: 5px 0 0;
 }
