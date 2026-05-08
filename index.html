@@ -2,54 +2,59 @@
 <html lang="km">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khmer Modern TV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Khmer Modern TV | ប៊ុនហេង</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+    <!-- Header ផ្នែកខាងលើ -->
     <header>
-        <div class="nav-top">
+        <div class="top-nav">
             <div class="logo">Modern<span>TV</span></div>
-            <button id="open-settings" class="icon-btn"><i class="fa fa-cog"></i></button>
+            <button id="open-settings" class="btn-icon"><i class="fa fa-sliders-h"></i></button>
         </div>
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="ស្វែងរកវីដេអូ ឬរឿងភាគ...">
+        <div class="search-wrapper">
+            <input type="text" id="search-input" placeholder="ស្វែងរកវីដេអូដែលអ្នកចង់មើល...">
             <i class="fa fa-search"></i>
         </div>
     </header>
 
-    <main class="video-grid" id="video-container">
-        </main>
+    <!-- តួសាច់រឿង/វីដេអូ -->
+    <main class="content-area">
+        <div class="grid-container" id="video-display">
+            <!-- វីដេអូនឹងបង្ហាញនៅទីនេះ -->
+        </div>
+    </main>
 
-    <div id="settings-modal" class="modal">
-        <div class="modal-content">
+    <!-- ផ្ទាំង Settings & Admin Dashboard -->
+    <div id="modal-settings" class="modal-overlay">
+        <div class="modal-box">
             <div class="modal-header">
-                <h2>ការកំណត់ & បង្ហោះ</h2>
-                <button id="close-settings">&times;</button>
+                <h3>ការកំណត់ & Admin</h3>
+                <span id="close-modal">&times;</span>
             </div>
             
-            <div class="setting-item">
-                <span>Dark Mode</span>
-                <label class="switch">
-                    <input type="checkbox" id="dark-mode-toggle">
-                    <span class="slider"></span>
+            <div class="setting-row">
+                <span>របៀបងងឹត (Dark Mode)</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="dark-toggle">
+                    <span class="round-slider"></span>
                 </label>
             </div>
 
-            <hr>
-            <h3>ផ្នែកម្ចាស់គេហទំព័រ (Owner)</h3>
-            <div class="admin-form">
-                <input type="text" id="post-title" placeholder="ចំណងជើង">
-                <input type="text" id="post-link" placeholder="Link រូបភាព Thumbnail">
-                <input type="text" id="video-url" placeholder="Link វីដេអូ (YouTube/MP4)">
-                <select id="post-type">
-                    <option value="video">វីដេអូ</option>
+            <div class="admin-section">
+                <h4>បង្ហោះមាតិកាថ្មី (Owner Only)</h4>
+                <input type="text" id="add-title" placeholder="បញ្ចូលចំណងជើងរឿង">
+                <input type="text" id="add-thumb" placeholder="Link រូបភាព Thumbnail">
+                <input type="text" id="add-url" placeholder="Link វីដេអូ (YouTube/MP4)">
+                <select id="add-type">
                     <option value="movie">រឿងភាគ</option>
-                    <option value="image">រូបភាព</option>
+                    <option value="video">វីដេអូខ្លី</option>
+                    <option value="news">ព័ត៌មាន</option>
                 </select>
-                <button id="btn-upload">បង្ហោះឥឡូវនេះ</button>
+                <button id="btn-save-post">បង្ហោះចូលវេបសាយ</button>
             </div>
         </div>
     </div>
